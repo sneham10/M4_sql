@@ -1,0 +1,179 @@
+SQL ACTIVITY:
+
+1.Display the name of movie type is starts with drama.
+Code:SELECT MOVIENAME FROM MOVIE WHERE MOVIETYPE LIKE 'DRAMA%';
+
+
++------------------------+
+| MOVIENAME              |
++------------------------+
+| BAHUBALI-THE BEGINNING |
+| PADMAVAAT              |
+| RANGASTHALAM           |
+| BADHAAIHO              |
+| THE VILLAIN            |
+| MARYADA RAMANNA        |
+| KHAIDI NO.150          |
+| RANGOON                |
++------------------------+
+
+2.Display the movies acted by Ayushmann
+Code:SELECT MOVIENAME FROM MOVIE WHERE HERONAME='AYUSHMANN';
+
+
++-----------+
+| MOVIENAME |
++-----------+
+| ANDHADHUN |
+| BADHAAIHO |
++-----------+
+
+3.Display the count of movies,having length of 18
+Code:SELECT COUNT(MOVIENAME) FROM MOVIE WHERE LENGTH>18;
+
+
++------------------+
+| COUNT(MOVIENAME) |
++------------------+
+|                6 |
++------------------+
+
+4.Display the movie having minimum length
+Code:SELECT MOVIENAME FROM MOVIE HAVING MIN(LENGTH);
+
+
+
++------------------------+
+| MOVIENAME              |
++------------------------+
+| BAHUBALI-THE BEGINNING |
++------------------------+
+
+5.Display all the details of movie, the language that first name starts with'T'.
+Code:SELECT * FROM MOVIE WHERE LANGUAGE LIKE'T%';
+
+
+
++---------+------------------------+-------------+----------+--------------+----------+--------+----------------+--------------+
+| MOVIEID | MOVIENAME              | HERONAME    | HEROINE  | RELEASEDDATE | LANGUAGE | LENGTH | MOVIETYPE      | PRODUCTIONID |
++---------+------------------------+-------------+----------+--------------+----------+--------+----------------+--------------+
+|     201 | BAHUBALI-THE BEGINNING | PRABHAS     | TAMANNAH | 2015-07-10   | TELUGU   |     21 | DRAMA FANTASY  |         9091 |
+|     501 | 2.0                    | RAJINIKANTH | AMY      | 2018-11-29   | TAMIL    |     20 | SCIENTIFIC     |         8892 |
+|     577 | AVAL                   | SIDDHARTH   | ANDREA   | 2003-11-17   | TAMIL    |     14 | HORROR         |         1899 |
+|     231 | BHARATH ANE NENU       | MAHESH BABU | KIARA    | 2018-04-20   | TELUGU   |     15 | THRILLER       |         7882 |
+|     244 | GRUHAM                 | SIDDHARTH   | ANDREA   | 2018-11-17   | TELUGU   |     14 | HORROR         |         1899 |
+|     224 | RANGASTHALAM           | RAM         | SAMANTHA | 2018-03-30   | TELUGU   |     17 | DRAMA          |         7682 |
+|     206 | MARYADA RAMANNA        | SUNIL       | SALONI   | 2010-07-23   | TELUGU   |     19 | DRAMA          |         9091 |
+|     211 | KHAIDI NO.150          | CHIRANJEEVI | KAJAL    | 2017-01-11   | TELUGU   |     20 | DRAMA THRILLER |         8892 |
+|     267 | ANAGANAGA O DHEERUDU   | SIDDHARTH   | SHRUTHI  | 2014-01-14   | TELUGU   |     16 | FANTASY        |         9091 |
++---------+------------------------+-------------+----------+--------------+----------+--------+----------------+--
+
+6.Display the movie name, Heroname,Heroine name whosehaving maximum Length.
+Code:SELECT MOVIENAME,HERONAME,HEROINE FROM MOVIE HAVING MAX(LENGTH);
+
+
+
++------------------------+----------+----------+
+| MOVIENAME              | HERONAME | HEROINE  |
++------------------------+----------+----------+
+| BAHUBALI-THE BEGINNING | PRABHAS  | TAMANNAH |
++------------------------+----------+----------+
+
+7.Display the movie name,Heroname,Heroine Name the movie released after 15 march 2018.
+Code:SELECT MOVIENAME,HERONAME,HEROINE FROM MOVIE WHERE RELEASEDDATE>'2018/03/15';
+
+
+
++------------------+-------------+-----------------+
+| MOVIENAME        | HERONAME    | HEROINE         |
++------------------+-------------+-----------------+
+| 2.0              | RAJINIKANTH | AMY             |
+| ZERO             | SHAH RUCK   | KATRINA KAIF    |
+| ANDHADHUN        | AYUSHMANN   | RADIKA APTE     |
+| BHARATH ANE NENU | MAHESH BABU | KIARA           |
+| GRUHAM           | SIDDHARTH   | ANDREA          |
+| KGF CHAPTER-1    | YASH        | SRINITHI SHETTY |
+| RANGASTHALAM     | RAM         | SAMANTHA        |
+| BADHAAIHO        | AYUSHMANN   | NENA            |
+| THE VILLAIN      | SUDEEP      | AMY             |
++------------------+-------------+-----------------+
+
+8.Display the count of thriller movie
+Code:SELECT COUNT(*) FROM MOVIE WHERE MOVIETYPE='THRILLER';
+
+
+
++----------+
+| COUNT(*) |
++----------+
+|        1 |
++----------+
+
+9.Display the count of movies whose released before 15 march 2018
+Code:SELECT COUNT(MOVIENAME) FROM MOVIE WHERE RELEASEDDATE<'2018/03/15';
+
+
++------------------+
+| COUNT(MOVIENAME) |
++------------------+
+|                9 |
++------------------+
+
+10.Display the release date of the movie name 'Zero'
+Code:SELECT RELEASEDDATE FROM MOVIE WHERE MOVIENAME='ZERO';
+
+
+
++--------------+
+| RELEASEDDATE |
++--------------+
+| 2018-12-21   |
++--------------+
+
+11.Display the actor name that acted with 'Amy'.
+Code:SELECT HERONAME FROM MOVIE WHERE HEROINE='AMY';
+
+
+
++-------------+
+| HERONAME    |
++-------------+
+| RAJINIKANTH |
+| SUDEEP      |
++-------------+
+
+12.Display the count of maximum movies released in a month of october.
+Code:select count(*) FROM MOVIE WHERE MONTH(RELEASEDDATE)='10';
+
+
+
++----------+
+| count(*) |
++----------+
+|        3 |
++----------+
+
+14.SELECT MOVIENAME FROM MOVIE GROUP BY RELEASEDDATE;
+
+
+
++------------------------+
+| MOVIENAME              |
++------------------------+
+| BAHUBALI-THE BEGINNING |
+| 2.0                    |
+| AVAL                   |
+| HOLIDAY                |
+| ZERO                   |
+| PADMAVAAT              |
+| ANDHADHUN              |
+| BHARATH ANE NENU       |
+| GRUHAM                 |
+| RANGASTHALAM           |
+| BADHAAIHO              |
+| MARYADA RAMANNA        |
+| KHAIDI NO.150          |
+| RANGOON                |
+| THE HOUSE NEXT DOOR    |
+| ANAGANAGA O DHEERUDU   |
++------------------------+
