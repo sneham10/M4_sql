@@ -1,0 +1,111 @@
+1. Display the name of movies, movie type is starts with Drama.
+
+
+delimiter //
+create PROCEDURE Getprod()
+       BEGIN
+       SELECT moviename,movietype  FROM movie
+       where movietype like 'Drama%';
+       END //
+delimiter ;
+call Getprod;
+
++------------------------+----------------+
+| moviename              | movietype      |
++------------------------+----------------+
+| BAHUBALI-THE BEGINNING | DRAMA FANTASY  |
+| PADMAVAAT              | DRAMA EPIC     |
+| RANGASTHALAM           | DRAMA          |
+| BADHAAIHO              | DRAMA COMEDY   |
+| THE VILLAIN            | DRAMA          |
+| MARYADA RAMANNA        | DRAMA          |
+| KHAIDI NO.150          | DRAMA THRILLER |
+| RANGOON                | DRAMA          |
++------------------------+----------------+
+
+2.Display the movies acted by actor Ayushmann.
+
+
+
+delimiter //
+create PROCEDURE Getpro()
+       BEGIN
+       SELECT count(moviename) FROM movie
+       where heroname= 'Ayushmann';
+       END //
+delimiter ;
+call Getprod;
+
++------------------+
+| count(moviename) |
++------------------+
+|                2 |
++------------------+
+
+3.Display the count of movies, having length above 18.
+
+
+
+delimiter //
+create PROCEDURE Getprod1()
+       BEGIN
+       SELECT count(moviename) FROM movie
+       where length>18;
+       END //
+delimiter ;
+call Getprod1;
+
++------------------+
+| count(moviename) |
++------------------+
+|                6 |
++------------------+
+
+4.Display the movie having minimum length.
+
+
+delimiter //
+create PROCEDURE Getprod2()
+       BEGIN
+       SELECT moviename,heroname,heroine from movie
+       where length=(select min(length) from movie);
+       END //
+delimiter ;
+call Getprod2;
+
++---------------------+-----------+---------+
+| moviename           | heroname  | heroine |
++---------------------+-----------+---------+
+| AVAL                | SIDDHARTH | ANDREA  |
+| GRUHAM              | SIDDHARTH | ANDREA  |
+| BADHAAIHO           | AYUSHMANN | NENA    |
+| THE HOUSE NEXT DOOR | SIDDHARTH | ANDREA  |
++---------------------+-----------+---------+
+
+5. Display all the details of movie, the language that first name starts with ‘T
+
+
+
+delimiter //
+create PROCEDURE Getprod3()
+       BEGIN
+       SELECT * from movie
+       where language like 'T%';   
+       END //
+delimiter ;
+
+call Getprod3;
+
++---------+------------------------+-------------+----------+--------------+----------+--------+----------------+--------------+
+| MOVIEID | MOVIENAME              | HERONAME    | HEROINE  | RELEASEDDATE | LANGUAGE | LENGTH | MOVIETYPE      | PRODUCTIONID |
++---------+------------------------+-------------+----------+--------------+----------+--------+----------------+--------------+
+|     201 | BAHUBALI-THE BEGINNING | PRABHAS     | TAMANNAH | 2015-07-10   | TELUGU   |     21 | DRAMA FANTASY  |         9091 |
+|     501 | 2.0                    | RAJINIKANTH | AMY      | 2018-11-29   | TAMIL    |     20 | SCIENTIFIC     |         8892 |
+|     577 | AVAL                   | SIDDHARTH   | ANDREA   | 2003-11-17   | TAMIL    |     14 | HORROR         |         1899 |
+|     231 | BHARATH ANE NENU       | MAHESH BABU | KIARA    | 2018-04-20   | TELUGU   |     15 | THRILLER       |         7882 |
+|     244 | GRUHAM                 | SIDDHARTH   | ANDREA   | 2018-11-17   | TELUGU   |     14 | HORROR         |         1899 |
+|     224 | RANGASTHALAM           | RAM         | SAMANTHA | 2018-03-30   | TELUGU   |     17 | DRAMA          |         7682 |
+|     206 | MARYADA RAMANNA        | SUNIL       | SALONI   | 2010-07-23   | TELUGU   |     19 | DRAMA          |         9091 |
+|     211 | KHAIDI NO.150          | CHIRANJEEVI | KAJAL    | 2017-01-11   | TELUGU   |     20 | DRAMA THRILLER |         8892 |
+|     267 | ANAGANAGA O DHEERUDU   | SIDDHARTH   | SHRUTHI  | 2014-01-14   | TELUGU   |     16 | FANTASY        |         9091 |
++---------+------------------------+-------------+----------+--------------+----------+--------+----------------+--------------+
